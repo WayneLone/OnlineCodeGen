@@ -1,0 +1,81 @@
+﻿@{
+    ViewBag.Title = "在线代码生成器";
+}
+
+@model OnlineCodeGenerator.Models.DBModel
+
+<div class="row">
+    <div class="col-md-4 col-sm-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading">填写基本信息</div>
+            <div class="panel-body">
+                <form asp-controller="Home" asp-action="GetDb" method="post">
+                    <div class="form-group">
+                        <label asp-for="IP">服务器IP</label>
+                        <input asp-for="IP" class="form-control" placeholder="IP" />
+                        <span asp-validation-for="IP" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="UserName">登录用户</label>
+                        <input asp-for="UserName" class="form-control" placeholder="用户" />
+                        <span asp-validation-for="UserName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Password">登录密码</label>
+                        <input asp-for="Password" class="form-control" placeholder="密码" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="CodeNameSpace">代码命名空间</label>
+                        <input asp-for="CodeNameSpace" class="form-control" placeholder="代码命名空间" />
+                        <span asp-validation-for="CodeNameSpace" class="text-danger"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="glyphicon glyphicon-ok" aria-hidden="true"></i> 确认
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 col-sm-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading">选择数据库</div>
+            <div class="panel-body">
+                <form asp-controller="Home" asp-action="GetDbTable" method="post">
+                    <div class="form-group">
+                        <label asp-for="Database">数据库</label>
+                        <select asp-for="Database" asp-items="Model.DbList" class="form-control"></select>
+                        <input type="hidden" asp-for="IP" />
+                        <input type="hidden" asp-for="UserName" />
+                        <input type="hidden" asp-for="Password" />
+                        <input type="hidden" asp-for="CodeNameSpace" />
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="glyphicon glyphicon-ok" aria-hidden="true"></i> 确认
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 col-sm-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading">选择数据表</div>
+            <div class="panel-body">
+                <form asp-controller="Home" asp-action="Build" method="post">
+                    <div class="form-group">
+                        <label asp-for="Table">数据表</label>
+                        <select asp-for="Table" asp-items="Model.TableList" class="form-control"></select>
+                        <input type="hidden" asp-for="IP" />
+                        <input type="hidden" asp-for="UserName" />
+                        <input type="hidden" asp-for="Password" />
+                        <input type="hidden" asp-for="CodeNameSpace" />
+                        <input type="hidden" asp-for="Database" />
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="glyphicon glyphicon-cutlery" aria-hidden="true"></i> 生成代码
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

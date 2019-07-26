@@ -1,0 +1,22 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "jquery@3.3.1",
+      "destination": "wwwroot/lib/jquery/"
+    },
+    {
+      "library": "twitter-bootstrap@3.3.7",
+      "destination": "wwwroot/lib/twitter-bootstrap/"
+    },
+    {
+      "library": "layer@2.3",
+      "destination": "wwwroot/lib/layer/"
+    },
+    {
+      "library": "clipboard.js@2.0.4",
+      "destination": "wwwroot/lib/clipboard.js/"
+    }
+  ]
+}

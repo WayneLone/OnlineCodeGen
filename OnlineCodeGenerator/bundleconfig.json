@@ -1,0 +1,14 @@
+[
+  {
+    "outputFileName": "wwwroot/css/sticky-footer-navbar.min.css",
+    "inputFiles": [
+      "wwwroot/css/sticky-footer-navbar.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/app.min.js",
+    "inputFiles": [
+      "wwwroot/js/app.js"
+    ]
+  }
+]

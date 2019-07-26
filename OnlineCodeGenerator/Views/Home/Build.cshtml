@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = "代码预览";
+}
+
+@model OnlineCodeGenerator.Models.Poco
+
+@section styles {
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/vs.min.css" rel="stylesheet" />
+}
+<div class="panel panel-primary">
+    <div class="panel-heading">代码预览</div>
+    <div class="panel-body">
+        <a href="javascript:void(0)" data-clipboard-target="#code-content" class="copy-btn"> <i class="fa fa-clipboard"></i> 复制代码</a>
+        <pre>
+        <code class="c#" id="code-content">
+using System;
+
+namespace @Model.NameSpace
+{
+    /// &lt;summary&gt;
+    /// @Model.ClassComment
+    /// &lt;/summary&gt;
+    public class @Model.ClassName
+    {
+        @foreach (var item in Model.Properties)
+        {
+        @:/// &lt;summary&gt;
+        @:/// @item.Comment
+        @:/// &lt;/summary&gt;
+        @:public @item.TypeName @item.Name { get; set; }
+        @:
+        }
+    }
+}
+            </code>
+        </pre>
+    </div>
+</div>
+@section scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+    <environment include="Development">
+        <script src="~/lib/clipboard.js/clipboard.js"></script>
+        <script src="~/lib/layer/layer.js"></script>
+        <script src="~/js/app.js"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/lib/clipboard.js/clipboard.min.js"></script>
+        <script src="https://cdn.bootcss.com/clipboard.js/2.0.4/clipboard.min.js"
+                asp-fallback-src="~/lib/clipboard.js/clipboard.min.js"
+                asp-fallback-test="window.Clipboard"></script>
+        <script src="https://cdn.bootcss.com/layer/2.3/layer.js"
+                asp-fallback-src="~/lib/layer/layer.js"
+                asp-fallback-test="window.layer"></script>
+        <script src="~/js/app.min.js" asp-append-version="true"></script>
+    </environment>
+}
