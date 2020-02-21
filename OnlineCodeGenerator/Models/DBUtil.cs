@@ -118,7 +118,7 @@ namespace OnlineCodeGenerator.Models
                     continue;
                 }
                 PocoProperty property = new PocoProperty();
-                if (item.Nullable && string.Equals(propertyType, "string"))
+                if (item.Nullable && string.Equals(propertyType, "DateTime"))
                 {
                     propertyType += "?";
                 }

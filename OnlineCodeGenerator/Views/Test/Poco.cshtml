@@ -1,0 +1,20 @@
+﻿@model OnlineCodeGenerator.Models.Poco
+using System;
+
+namespace @Model.NameSpace
+{
+    /// <summary>
+    /// @Html.Raw(Model.ClassComment)
+    /// </summary>
+    public class @Model.ClassName
+    {
+        @foreach (var item in Model.Properties)
+        {
+        @:/// <summary>
+        @:/// @Html.Raw(item.Comment)
+        @:/// </summary>
+        @:public @item.TypeName @Html.Raw(item.Name) { get; set; }
+        @:
+        }
+    }
+}
