@@ -118,7 +118,19 @@ namespace OnlineCodeGenerator.Models
                     continue;
                 }
                 PocoProperty property = new PocoProperty();
-                if (item.Nullable && string.Equals(propertyType, "DateTime"))
+                List<string> valueTypes = new List<string>
+                {
+                    "long",
+                    "bool",
+                    "DateTime",
+                    "decimal",
+                    "double",
+                    "int",
+                    "short",
+                    "single",
+                    "Guid"
+                };
+                if (item.Nullable && valueTypes.Contains(propertyType))
                 {
                     propertyType += "?";
                 }
@@ -142,7 +154,7 @@ namespace OnlineCodeGenerator.Models
             switch (sqlDataTypeName.ToLower())
             {
                 case "bigint":
-                    return "Int64";
+                    return "long";
                 case "binary":
                 case "image":
                 case "varbinary":
@@ -171,7 +183,7 @@ namespace OnlineCodeGenerator.Models
                 case "real":
                     return "single";
                 case "smallint":
-                    return "Int16";
+                    return "short";
                 case "tinyint":
                     return "byte";
                 case "uniqueidentifier":
